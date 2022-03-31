@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
+
 import dice1Url from './1.svg'
 import dice2Url from './2.svg'
 import dice3Url from './3.svg'
@@ -26,7 +27,18 @@ const diceUrls = [dice1Url, dice2Url, dice3Url, dice4Url, dice5Url, dice6Url]
 // Vypiš v atributu `alt` u obrázku správné číslo.
 
 const Uloha3 = () => {
-	const cisloNaKostce = 1 /* jedna až šest */
+	// const cisloNaKostce = 1 /* jedna až šest */
+
+	const [cisloNaKostce, setCislo] = useState(1)
+
+	const handleClick3 = () => {
+		setCislo((cisloNaKostce % diceUrls.length) + 1)			// pomocí modula setState((cislo % diceUrls.length) + 1) TO FUNGUJE :)))
+		// if(cislo+1 === 7){
+		// 	setCislo(1)						// TODLE NEFUNGUJE
+		// }else {
+		// 	setCislo(cislo + 1)	
+		// }
+	}
 
 	return (
 		<div className="kostka">
@@ -34,11 +46,11 @@ const Uloha3 = () => {
 				src={diceUrls[cisloNaKostce - 1]} /* indexy se číslují od nuly */
 				width={60}
 				height={60}
-				alt="Kostka s číslem @TODO"
+				alt={`Kostka s číslem ${cisloNaKostce}`}
 				className="kostka__ikona"
 			/>
-			<p className="kostka__text">Na kostce je číslo @TODO.</p>
-			<button className="kostka__akce">další</button>
+			<p className="kostka__text">Na kostce je číslo {cisloNaKostce}.</p>
+			<button onClick={handleClick3} className="kostka__akce">další</button>
 		</div>
 	)
 }
