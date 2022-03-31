@@ -1,5 +1,6 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './carousel.css'
+
 
 // Tvoříš jednoduchou galerii, kde se jde klikáním
 // na tlačítka přesouvat na další nebo předchozí obrázky.
@@ -33,20 +34,43 @@ https://source.unsplash.com/YmATDIFsCmQ/880x500
 // žádný obrázek.
 
 
+const pole = [
+	"https://source.unsplash.com/WLUHO9A_xik/880x500",
+	"https://source.unsplash.com/DA1eGglMmlg/880x500",
+	"https://source.unsplash.com/kTxL6le0Wgk/880x500",
+	"https://source.unsplash.com/7go5UASxmDY/880x500",
+	"https://source.unsplash.com/YmATDIFsCmQ/880x500",
+]
+
+
 const Uloha4 = () => {
+
+	const [cislo, setCislo] = useState(0);
+	console.log(cislo);
+
+	const handleCislo = (change) => {
+		if (cislo + change >= pole.length) {
+			setCislo(0);
+		} else if (cislo + change < 0) {
+			setCislo(4)
+		} else {
+			setCislo(cislo + change)
+		}
+	}
+
 	return (
 		<div className="carousel">
-			<button className="carousel__predchozi" aria-label="předchozí">
+			<button onClick={() => {handleCislo(-1)}} className="carousel__predchozi" aria-label="předchozí">
 				←
 			</button>
 			<div className="carousel__media">
 				<img
 					className="carousel__image"
-					src="https://source.unsplash.com/7go5UASxmDY/880x500"
-					alt=""
+					src={pole[cislo]}
+					alt={`cislo ${cislo}`}
 				/>
 			</div>
-			<button className="carousel__dalsi" aria-label="další">
+			<button onClick={() => {handleCislo(1)}} className="carousel__dalsi" aria-label="další">
 				→
 			</button>
 		</div>
