@@ -17,6 +17,9 @@ import './ukol.css'
 // Je-li úkol splněný, nerenderuj tlačítko a k `li` přidej navíc třídu `ukol--splnen`.
 
 const Ukol = ({ nazev }) => {
+
+	const [splnen, setSplnen] = useState(false)
+
 	return (
 		<li className="ukol">
 			<span className="ukol__nazev">{nazev}</span>
@@ -28,7 +31,12 @@ const Ukol = ({ nazev }) => {
 const Uloha6 = () => {
 	const ukoly = ['Zamést', 'Pověsit prádlo', 'Umýt okna', 'Vynést koš']
 
-	return <ul>{ukoly}</ul>
+	return (
+		<ul>{ukoly.map((polozka) => {
+			<Ukol  nazev={polozka} />
+
+			})}
+		</ul>)
 }
 
 export default Uloha6;

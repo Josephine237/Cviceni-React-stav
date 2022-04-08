@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './ukazatel-uspechu.css'
 
 // Děláš jednoduchou komponentu, která ukazuje "progress bar",
@@ -19,18 +19,28 @@ import './ukazatel-uspechu.css'
 // Nastav prvku `ukazatel-uspechu__postup` šířku podle stavové proměnné.
 
 const UkazatelPokroku = ({ barva }) => {
+
+	const [postup, setPostup] = useState(0);
+
+	const handleClick = () => {
+		if (postup < 100) {
+		setPostup(postup + 10)
+		}
+	}
+
 	return (
 		<div className="ukazatel-uspechu">
 			<div className="ukazatel-uspechu__ramecek">
 				<div
 					className="ukazatel-uspechu__postup"
 					style={{
-						width: '40%',
-						backgroundColor: 'red',
+						width: `${postup}%`,
+						backgroundColor: barva,
+						// v JS se všechny css vlastnosti, které v sobě mají pomlčku, převádějí na camelCase, protože JS by bral pomlčku jako mínus
 					}}
 				></div>
 			</div>
-			<button>postoupit o 10 %</button>
+			<button onClick={handleClick}>postoupit o 10 %</button>
 		</div>
 	)
 }

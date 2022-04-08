@@ -1,5 +1,6 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './hamburger.css'
+
 
 // Tvoříš rozbalovací hamburger menu.
 
@@ -18,13 +19,32 @@ import './hamburger.css'
 // Pro otevřené přidej navíc `hamburger--otevrene`.
 
 const Uloha5 = () => {
+
+	const [isOpen, setIsOpen] = useState(false)	// na začátku je munu schované, proto je tam na začátku false
+
+	const handleClick = () => {
+		if (isOpen === true) {
+			setIsOpen(false)
+		} else {
+			setIsOpen(true)
+		}
+		// dalo by se to zapsat i takhle setIsOpen(!isOpen) - negace 
+
+		// místo handleClick v buttonu můžu dát todle oClick{() => {setIsOpen(!isOpen)}} a celou const handleclick vymazat
+	}
+
+	// { isOpen ? 'hamburger hamburger--otevrene' : 'hamburger'} todle je tam proto, že když máme otevřené hamburger menu, tak se hamburger menu změní na křížek, kterým ho pak můžu zase zavřít
+	
 	return (
 		<>
-			<button className="hamburger" aria-label="menu">
+			<button className={ isOpen ? 'hamburger hamburger--otevrene' : 'hamburger'} aria-label="menu" onClick={handleClick}>
 				<span></span>
 				<span></span>
 				<span></span>
 			</button>
+
+			{ isOpen &&
+			
 			<ul>
 				<li>
 					<a href="#o-nas">O nás</a>
@@ -38,8 +58,9 @@ const Uloha5 = () => {
 				<li>
 					<a href="#cenik">Ceník</a>
 				</li>
-			</ul>
+			</ul> }
 		</>
+		// ten ternární operátor { isOpen ? <ul></ul> : null } se dá napsat i lépe pomocí logického operátoru { isOpen && <ul></ul> } 
 	)
 }
 

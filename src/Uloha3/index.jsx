@@ -56,3 +56,30 @@ const Uloha3 = () => {
 }
 
 export default Uloha3;
+
+
+// !!! Dá se to napsat i takhle !!!
+
+
+// export const Uloha3 = () => {
+// 	const [cisloNaKostce, setCisloNaKostce] = useState(1) /* jedna až šest */
+
+// 	return (
+// 		<div className="kostka">
+// 			<img
+// 				src={diceUrls[cisloNaKostce - 1]} /* indexy se číslují od nuly */
+// 				width={60}
+// 				height={60}
+// 				alt={`Kostka s číslem ${cisloNaKostce}`}
+// 				className="kostka__ikona"
+// 			/>
+// 			<p className="kostka__text">Na kostce je číslo {cisloNaKostce}.</p>
+// 			<button
+// 				className="kostka__akce"
+// 				onClick={() => setCisloNaKostce((cisloNaKostce % 6) + 1)}
+// 			>
+// 				další
+// 			</button>
+// 		</div>
+// 	)
+// }

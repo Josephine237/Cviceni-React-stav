@@ -18,7 +18,8 @@ const Pocitadlo = () => {
 
 	const zvetsiPocet = (oKolik) => {
 		setCislo(cislo + oKolik)
-	}
+	}			// todle (celá const) tu vůbec nemusí být (ve výsledcích jí nemají a funguje to i bez ní)
+				// nechápu proč, on pak v řešení má v returnu místo zvetsiPocet, setCislo
 
 	return (
 		<>
